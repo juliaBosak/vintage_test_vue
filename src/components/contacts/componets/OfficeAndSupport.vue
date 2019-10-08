@@ -1,5 +1,10 @@
 <template>
-      <div class="contacts__office-and-support">
+  <section class="contacts__section">
+    <div class="container">
+      <div class="contacts__header">
+        <h2 class="contacts__title title-h2">Contacts</h2>
+      </div>
+      <div class="office-and-support contacts__row">
         <article class="contacts__office">
           <header class="contacts__office-header">
             <h3 class="title-h3"><span class="green-text">GMS</span> Headquarters</h3>
@@ -36,9 +41,8 @@
                   </h6>
                 </div>
                 <div class="contacts__link">
-                  <a class="link" href="viber://chat?number=+41415446200">Viber us</a>
-                  <!-- //ДЛЯ ПРИЛОЖЕНИЯ VIBER НА МОБИЛЬНЫХ
-                    <a title="Viber" href="viber://add?number=120345678910">Viber</a>-->
+                  <a class="link"  v-if="isMobile()" href="viber://add?number=41415446200">Viber us</a>
+                  <a class="link"  v-else href="viber://chat?number=41415446200">Viber us</a>
                 </div>
               </div>
               <div class="contacts__link-wrap">
@@ -48,7 +52,7 @@
                   </h6>
                 </div>
                 <div class="contacts__link">
-                  <a class="link" href="">Contact us</a>
+                  <a class="link" href="#contacts__form">Contact us</a>
                 </div>
               </div>
             </div>
@@ -68,10 +72,21 @@
           </div>
         </article>
       </div>
+    </div>
+  </section>
 </template>
 
 <script>
 export default {
-  name: 'OfficeAndSupport'
+  name: 'OfficeAndSupport',
+  methods: {
+    isMobile () {
+      if (/Android|webOS|iPhone||iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        return true
+      } else {
+        return false
+      }
+    }
+  }
 }
 </script>

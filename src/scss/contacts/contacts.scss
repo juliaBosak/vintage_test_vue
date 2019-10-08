@@ -1,8 +1,8 @@
 .contacts {
-	max-width: 1280px;
+	width: 100%;
 	background-color: #fff;
 	padding-top: 62px;
-	font-family: "SuisseIntl", sans-serif;
+	font-family: 'SuisseIntl', sans-serif;
 	font-weight: 300;
 	&__title {
 		color: $gray1;
@@ -12,5 +12,18 @@
 	&__header {
 		margin-bottom: 50px;
 	}
+	&__row {
+		display: flex;
+		justify-content: space-between;
+		height: 100%;
+	}
+}
+@include for-extra-small {
+	.contacts__row {
+		flex-direction: column;
+		align-items: center;
+	}
 }
 @import "components/officeAndSupport";
+@import "components/officesAndMap";
+@import "components/contactsForm";

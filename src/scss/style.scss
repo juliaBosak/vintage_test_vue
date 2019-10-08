@@ -20,7 +20,7 @@ html, body {
 }
 @include for-extra-small {
 	.container {
-		width: 100%;
+		width: 97%;
 	}
 }
 @include for-small {
@@ -43,4 +43,6 @@ html, body {
 @import "components/paragraph";
 @import "components/phone";
 @import "components/link";
+@import "components/tabs";
+@import "components/form";
 @import 'contacts/contacts';
