@@ -1,9 +1,9 @@
 <template>
-  <section class="contacts">
+  <div class="contacts">
       <OfficeAndSupport/>
-    <OfficesAndMap v-bind:tabs="tabs" v-bind:markers="markers "/>
+    <OfficesAndMap v-bind:currentTabs="tabs" v-bind:currentMarkers="markers" v-bind:currentStyle="style"/>
     <ContactsForm/>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -46,7 +46,8 @@ export default {
         'New York': { lat: 40.7341777, lng: -74.131975 },
         'Guangzhou': { lat: 23.3278454, lng: 113.1255902 },
         'Barcelona': { lat: 41.383962, lng: 2.1740104 }
-      }
+      },
+      style: require('../../assets/map/googleMapStyle.json')
     }
   }
 

@@ -69,6 +69,10 @@
                    v-if="statusOk">
                 Form has sent
               </div>
+              <div class="form__error"
+                   v-if="statusError">
+                Please, fill the form
+              </div>
               <div class="form__button-wrap">
                 <button
                   class="form__button"
@@ -103,7 +107,8 @@ export default {
       isPhoneTouched: false,
       isCheckboxTouched: false,
       isSubmiting: false,
-      statusOk: false
+      statusOk: false,
+      statusError: false
     }
   },
   computed: {
@@ -134,9 +139,9 @@ export default {
   },
   methods: {
     sentForm: function () {
-      this.isSubmiting = true
       if (this.isEmailValid && this.isNameValid && this.isPhoneValid && this.isAgreeValid) {
-        postData('http://httpbin.org/post',
+        this.isSubmiting = true
+        postData('https://httpbin.org/post',
           {
             name: this.name,
             phone: this.phone,
@@ -153,6 +158,9 @@ export default {
             console.error(error)
             this.isSubmiting = false
           })
+      } else {
+        this.statusError = true
+        setTimeout(() => { this.statusError = false }, 1000)
       }
 
       function postData (url = '', data = {}) {
@@ -168,7 +176,8 @@ export default {
           referrer: 'no-referrer',
           body: JSON.stringify(data)
         })
-          .then(response => response.json())
+          .then(response => response.json()
+          )
       }
     }
   }
